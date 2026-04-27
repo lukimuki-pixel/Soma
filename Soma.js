@@ -2,18 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Írógép effektus a címsorhoz
     const textElement = document.querySelector('.hero-content p');
-    const text = textElement.innerText;
-    textElement.innerText = '';
-    let i = 0;
+    if (textElement) {
+        const text = textElement.innerText;
+        textElement.innerText = '';
+        let i = 0;
 
-    function typeWriter() {
-        if (i < text.length) {
-            textElement.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
+        function typeWriter() {
+            if (i < text.length) {
+                textElement.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
         }
+        typeWriter();
     }
-    typeWriter();
 
     // 2. Navigációs sáv hátterének változtatása görgetéskor
     const header = document.querySelector('header');
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Megjelenési animáció görgetéskor (Scroll Reveal)
+    // 3. Megjelenési animáció görgetéskor
     const observerOptions = {
         threshold: 0.1
     };
@@ -41,8 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Alkalmazzuk a kártyákra és szekciókra
-    const animateElements = document.querySelectorAll('.project-card, section h2');
+    const animateElements = document.querySelectorAll('.project-card, section h2, .container p');
     animateElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
