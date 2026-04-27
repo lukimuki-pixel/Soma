@@ -11,12 +11,14 @@ body {
     color: #f8fafc;
     line-height: 1.6;
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Megakadályozza az oldal irányú elcsúszást */
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%; /* Biztosítja, hogy ne lógjon ki */
 }
 
 /* Navigáció */
@@ -27,6 +29,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(10px); /* Modern elmosódott háttér */
 }
 
 nav {
@@ -42,11 +45,14 @@ nav {
     font-size: 1.5rem;
     font-weight: bold;
     color: #38bdf8;
+    white-space: nowrap; /* Ne törje ketté a logót kis képernyőn */
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    flex-wrap: wrap; /* Ha túl sok a menüpont, törje több sorba mobilnál */
+    justify-content: flex-end;
 }
 
 nav ul li {
@@ -65,12 +71,17 @@ nav ul li a:hover {
 
 /* Hero szekció */
 .hero {
-    height: 100vh;
+    min-height: 100vh; /* height helyett min-height, hogy tartalomra nyúlhasson */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 120px 20px 60px; /* Helyet hagy a fix fejlécnek */
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.hero-content {
+    max-width: 800px;
 }
 
 .highlight {
@@ -80,7 +91,7 @@ nav ul li a:hover {
 .btn {
     display: inline-block;
     margin-top: 20px;
-    padding: 10px 25px;
+    padding: 12px 30px;
     background-color: #38bdf8;
     color: #0f172a;
     text-decoration: none;
@@ -91,11 +102,13 @@ nav ul li a:hover {
 
 .btn:hover {
     background-color: #7dd3fc;
+    transform: scale(1.05); /* Egy kis extra animáció */
 }
 
 /* Szekciók */
 section {
     padding: 100px 0;
+    width: 100%;
 }
 
 #resume {
@@ -104,60 +117,90 @@ section {
 
 h2 {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     font-size: 2.5rem;
     color: #38bdf8;
 }
 
-/* Projektek rács */
+/* Projektek rács - Itt csúszik szét leggyakrabban */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    /* repeat(auto-fit...) helyett auto-fill-t is használhatsz, 
+       de a legfontosabb a minmax pontos belövése */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .project-card {
     background-color: #1e293b;
-    padding: 25px;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 12px;
     border: 1px solid #334155;
-    transition: transform 0.3s, border-color 0.3s;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    height: 100%; /* Minden kártya egyforma magas lesz a sorban */
 }
 
 .project-card h3 {
     color: #38bdf8;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    flex-grow: 1; /* Ez kitolja a linket a kártya aljára, ha kevés a szöveg */
+    margin-bottom: 15px;
 }
 
 .project-card a {
     color: #7dd3fc;
     text-decoration: none;
-    margin-top: 15px;
     font-weight: bold;
+    align-self: flex-start;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
     border-color: #38bdf8;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Mobil optimalizálás (Media Query) */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Mobilnál a logó és menü egymás alá kerül */
+        gap: 15px;
+    }
+    
+    nav ul {
+        justify-content: center;
+        margin-left: 0;
+        padding-left: 0;
+    }
+    
+    nav ul li {
+        margin: 0 10px;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 50px 0;
+    padding: 60px 0;
     background-color: #020617;
 }
 
 .social-icons {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .social-icons a {
     color: #f8fafc;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin: 0 15px;
     transition: 0.3s;
 }
