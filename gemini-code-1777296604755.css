@@ -1,0 +1,135 @@
+/* Alapbeállítások */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f172a; /* Sötétkék/Fekete háttér */
+    color: #f8fafc;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Navigáció */
+header {
+    background-color: rgba(15, 23, 42, 0.9);
+    padding: 1rem 10%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f8fafc;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #38bdf8;
+}
+
+/* Hero szekció */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.highlight {
+    color: #38bdf8;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #38bdf8;
+    color: #0f172a;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #7dd3fc;
+}
+
+/* Szekciók */
+section {
+    padding: 100px 10%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #38bdf8;
+}
+
+/* Projektek rács */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: #38bdf8;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #020617;
+}
+
+.social-icons a {
+    color: #f8fafc;
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #38bdf8;
+}
